@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT'S BIRTHDAY TIME FOR SEFTI! 💖✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Varela+Round&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="party-bg" id="partyBg"></div>
+    <div class="firework-overlay" id="fireworkOverlay"></div>
+
+    <!-- HALAMAN 1 -->
+    <div class="card active" id="page1">
+        <div>
+            <div class="badge-decor">
+                <span class="retro-badge">✨ CEWEK CANTIK PUNYA TYO</span>
+                <span class="retro-badge pink">💖 CEWEK CANTIGA</span>
+                <span class="retro-badge blue">🌸 LAGI ULTAH NIH BOSS</span>
+            </div>
+            <div class="media-container">
+                <img src="https://i.imgur.com/2hIHGKQ.jpeg" alt="Foto Kamu" class="photo-box" style="transform: rotate(-5deg);">
+                <img src="https://i.imgur.com/SCDfHjJ.jpeg" alt="Foto Pacar" class="photo-box" style="transform: rotate(6deg); background: var(--pink);">
+            </div>
+            <h1>HARI SABTU KENCAN SAMA TYO GANTENG MAU GAK? 🥰</h1>
+            <p>Gak boleh nolak atau pilih 'Enggak' ya! 😜🔥</p>
+        </div>
+        <div class="inline-btns" id="buttonGroup">
+            <button id="yesBtn" onclick="handleYesClick()">MAU BANGET!!! 💖</button>
+            <button id="noBtn" onmouseover="moveNoButton()" onclick="moveNoButton()">Enggak 🤪</button>
+        </div>
+    </div>
+
+    <!-- HALAMAN 2 -->
+    <div class="card" id="page2">
+        <div>
+            <div class="badge-decor">
+                <span class="retro-badge pink">🎮 PILIH YANG KAMU MAU</span>
+                <span class="retro-badge">🚀 LET'S GO</span>
+            </div>
+            <div class="media-container">
+                <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdng1djhxNGx4YXB0Mjc5aXlmMjBwajh4eWdoMmp6Z2Y4Ymk3Nm44NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/Sb9XkPLp2flmGntnNM/giphy.gif" alt="Foto" class="photo-box" style="transform: rotate(3deg);">
+                <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHV4ejI5bDY5dWV5cGtob3IxNTEzeHZ3Zno5NXR3MWEydXBvZjRvOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/02giCsYlVejePXWhcI/giphy.gif" alt="Foto" class="photo-box" style="transform: rotate(-4deg); background: var(--blue);">
+            </div>
+            <h2>COBA DIPILIH SAYANG, SATU AJA YA WKWKWWK ✨</h2>
+        </div>
+        <div class="btn-group">
+            <button class="btn-fun" onclick="bigBoom(); selectOption(1)">🎮 Funworld Alsut + The Breeze</button>
+            <button class="btn-fun" onclick="bigBoom(); selectOption(2)" style="background: var(--pink);">🍣 Makan Sushi + Ke Museum Macan</button>
+            <button class="btn-fun" onclick="bigBoom(); selectOption(3)" style="background: var(--purple);">⛰️ Roadtrip Seru Ke Bandung!</button>
+        </div>
+    </div>
+
+    <!-- HALAMAN 3 -->
+    <div class="card" id="page3">
+        <div>
+            <div class="badge-decor">
+                <span class="retro-badge blue">🌟 KENANGAN</span>
+                <span class="retro-badge pink">📸 HARAPAN</span>
+            </div>
+            <h2>DESTINASI PILIHAN KITA! 🚀</h2>
+            <div class="big-photo-container">
+                <img id="mainDestImg" src="" alt="Destinasi">
+            </div>
+            <p id="destDescription">Seru banget pokoknya!</p>
+        </div>
+        <div>
+            <button class="btn-fun" onclick="bigBoom(); nextPage(4)">LANJUT TERUS SAYANGKU ➡️</button>
+        </div>
+    </div>
+
+    <!-- HALAMAN 4 -->
+    <div class="card" id="page4">
+        <div>
+            <div class="badge-decor">
+                <span class="retro-badge pink">💬 SEFTI CHAYANK TYO WK</span>
+                <span class="retro-badge blue">✨ SI GEMES ASAL CANTIGA</span>
+            </div>
+            <div class="media-container">
+                <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMGx6Y2E4bHE1YjlmcTJsdXZkZDJpenpmNWY3d3Z5MGh1bWxxemczdCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/4N1wOi78ZGzSB6H7vK/giphy.gif" alt="Foto" class="photo-box" style="transform: rotate(-4deg);">
+                <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcWZ2MzNiZ2w4NHMycXQya2UyeGY4aGc1OG8yZDVybDRzaGxvNzJ5ciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jBupZrapLgk6mvlvmm/giphy.gif" alt="Foto" class="photo-box" style="transform: rotate(5deg); background: var(--yellow);">
+            </div>
+            <h2>HARUS PELUKAN TERUS POKOKNYAAAAAAAA! 📌</h2>
+            <p>Semoga kamu suka sama ajakan aku ya sayang WWKKWWK,! 📸✨</p>
+        </div>
+        <div>
+            <button class="btn-fun" onclick="bigBoom(); nextPage(5)">LANJUT KE ITINERARY 🚗</button>
+        </div>
+    </div>
+
+    <!-- HALAMAN 5 -->
+    <div class="card" id="page5">
+        <div>
+            <div class="badge-decor">
+                <span class="retro-badge">🚗 ITINERARY</span>
+                <span class="retro-badge pink">✨ NO DEBAT</span>
+            </div>
+            <div class="media-container">
+                <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2Q5OHE0a2N5bHpsY3N3ZnJ2cnoxZjltM2I4eGFsOTUydDZsNm8wNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jZAOQbch4ibfQ97VBS/giphy.gif" alt="Foto" class="photo-box" style="transform: rotate(-6deg); background: var(--yellow);">
+                <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2NibHNsd2s5aWM1N3g0ZTZmM25qZWJ1NHRzeHJobmpuNDZpa3NiNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/naAaDvbAoOYdW/giphy.gif" alt="Foto" class="photo-box" style="transform: rotate(4deg);">
+            </div>
+            <h1>SPECIAL DAY FOR YOU! 🎉</h1>
+            <p><b>Jadwal fix no debat!</b> JADWAL INI MENYESUAIKAN KONDISI YA SAYANG 🚗💨💖</p>
+        </div>
+        <div>
+            <button class="btn-fun" onclick="bigBoom(); nextPage(6)">LIHAT JADWAL SPESIAL KITA 🕒</button>
+        </div>
+    </div>
+
+    <!-- HALAMAN 6 -->
+    <div class="card" id="page6">
+        <div>
+            <div class="badge-decor">
+                <span class="retro-badge pink">📋 JADWAL KITA</span>
+                <span class="retro-badge blue">✨ READY</span>
+            </div>
+            <h2 id="itineraryTitle">ITINERARY PILIHANMU! 🕒</h2>
+            <div class="itinerary-box">
+                <ul id="itineraryList"></ul>
+            </div>
+        </div>
+        <div>
+            <button class="btn-fun" onclick="bigBoom(); nextPage(7)">BUKA KEJUTAN TERAKHIR 🎁</button>
+        </div>
+    </div>
+
+    <!-- HALAMAN 7 -->
+    <div class="card" id="page7">
+        <div>
+            <div class="badge-decor">
+                <span class="retro-badge pink">🎂 SPECIAL BIRTHDAY</span>
+                <span class="retro-badge blue">🎉 SEFTI FACHRIANI</span>
+            </div>
+            <div class="media-container">
+                <img src="https://i.imgur.com/IpHxeLV.jpeg" alt="Foto Sefti" class="photo-box" style="transform: rotate(-3deg);">
+                <img src="https://i.imgur.com/g1SrEHM.jpeg" alt="Foto Cantik" class="photo-box" style="transform: rotate(5deg); background: var(--orange);">
+            </div>
+            <h1>HAPPY BIRTHDAY SEFTI FACHRIANI TERCINTA! 🎂✨</h1>
+            <p>Doa dan harapan terbaik buat Sefti Fachriani yang paling cantik! Semoga panjang umur, sehat selalu, makin sukses, makin sayang banget sama aku, lebih dewasa, dikasih rezeki terus dan semua impian kamu terkabul! I love you SOMUCHHHHHHHHH!  💖🥰🎉</p>
+        </div>
+        <div>
+            <button class="btn-fun" onclick="bigBoom(); nextPage(8)">LIHAT GALERI SPESIAL 🌟</button>
+        </div>
+    </div>
+
+    <!-- HALAMAN 8 -->
+    <div class="card" id="page8">
+        <div class="looping-gallery-container">
+            <div class="looping-gallery">
+                <img src="https://i.imgur.com/nr9AEfA.jpeg" alt="Foto 1">
+                <img src="https://i.imgur.com/3W5XLUk.jpeg" alt="Foto 2">
+                <img src="https://i.imgur.com/rsI6tQj.jpeg" alt="Foto 3">
+                <img src="https://i.imgur.com/nr9AEfA.jpeg" alt="Foto 1">
+                <img src="https://i.imgur.com/3W5XLUk.jpeg" alt="Foto 2">
+                <img src="https://i.imgur.com/rsI6tQj.jpeg" alt="Foto 3">
+            </div>
+        </div>
+        <div style="z-index: 100; position: relative;">
+            <div class="badge-decor">
+                <span class="retro-badge pink">💖 FOREVER</span>
+                <span class="retro-badge blue">✨ MY QUEEN</span>
+            </div>
+            <h1>HAPPY BIRTHDAY KE 28  </h1>
+           <h1>YA SAYANGKUHH CINTAKUUU ✨</h1>
+            <p style="background: rgba(255,255,255,0.9); margin-top: 20px;">Terima kasih sudah jadi bagian terindah dalam hidupku. Terima Kasih sudah sabar terus sama aku, Terimakasih kamu mau sama aku, Terimakasih Tuhan engkau sudah menciptakan perempuan cantik dan sabar kayak pacar aku. Semoga hari-hari kita selalu dipenuhi kebahagiaan dan cinta kasih ya sayang! I love you so much! mwaaaaahhhhhh!!!!! 💖🌹</p>
+        </div>
+        
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
