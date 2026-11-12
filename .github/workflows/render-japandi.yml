@@ -1,0 +1,47 @@
+# Render video Japandi Bedroom 3D menjadi MP4 di server GitHub (gratis untuk repo publik,
+# 2.000 menit/bulan untuk repo privat). Bisa dijalankan dari HP:
+# GitHub app / browser -> tab Actions -> "Render Japandi Bedroom MP4" -> Run workflow.
+name: Render Japandi Bedroom MP4
+
+on:
+  workflow_dispatch:
+    inputs:
+      scale:
+        description: "Skala resolusi (1 = 1080x1920, 0.5 = draft cepat)"
+        default: "1"
+        required: true
+  push:
+    paths:
+      - "japandi-bedroom-3d/src/**"
+      - "japandi-bedroom-3d/public/**"
+      - "japandi-bedroom-3d/package.json"
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    defaults:
+      run:
+        working-directory: japandi-bedroom-3d
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: japandi-bedroom-3d/package-lock.json
+      - name: Install dependencies
+        run: npm ci
+      - name: Install Chrome Headless Shell (Remotion)
+        run: npx remotion browser ensure
+      - name: Render MP4 (WebGL software renderer)
+        run: >
+          npx remotion render src/index.ts JapandiBedroom out/japandi-bedroom.mp4
+          --gl=swangle --concurrency=4 --timeout=120000
+          --scale=${{ github.event.inputs.scale || '1' }}
+      - name: Upload MP4
+        uses: actions/upload-artifact@v4
+        with:
+          name: japandi-bedroom-mp4
+          path: japandi-bedroom-3d/out/japandi-bedroom.mp4
+          retention-days: 30

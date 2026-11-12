@@ -1,0 +1,27 @@
+{
+  "name": "japandi-bedroom-3d",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Animasi 3D isometric: transformasi ruangan kosong menjadi kamar tidur Japandi (Remotion + Three.js)",
+  "scripts": {
+    "dev": "remotion studio",
+    "still": "remotion still src/index.ts JapandiBedroom out/preview.png --frame=840",
+    "render": "remotion render src/index.ts JapandiBedroom out/japandi-bedroom.mp4",
+    "render:fast": "remotion render src/index.ts JapandiBedroom out/japandi-bedroom-draft.mp4 --scale=0.5"
+  },
+  "dependencies": {
+    "@react-three/fiber": "^9.3.0",
+    "@remotion/cli": "^4.0.543",
+    "@remotion/fonts": "^4.0.543",
+    "@remotion/three": "^4.0.543",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "remotion": "^4.0.543",
+    "three": "^0.180.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/three": "^0.187.0",
+    "typescript": "^7.0.2"
+  }
+}
