@@ -48,7 +48,29 @@ Tanpa GPU (server/cloud/CI), pakai renderer software:
 npx remotion render src/index.ts JapandiBedroom out/japandi-bedroom.mp4 --gl=swangle --concurrency=4
 ```
 
-## Render 100% dari HP Android (tanpa komputer)
+## Render dari HP Android (tanpa komputer)
 
-Lihat bagian **"Render dari HP Android"** di bawah, atau gunakan GitHub Actions yang sudah
-disiapkan di `.github/workflows/render-japandi.yml` (di root repo).
+### Opsi A — GitHub Actions (disarankan, gratis)
+Workflow `.github/workflows/render-japandi.yml` (di root repo) merender video di server GitHub.
+
+1. Buka repo di browser HP (Chrome → github.com, aktifkan *Desktop site* bila perlu) atau aplikasi GitHub.
+2. Tab **Actions** → **Render Japandi Bedroom MP4** → **Run workflow** (`scale` = `1` untuk 1080×1920,
+   `0.5` untuk draft cepat). Workflow juga otomatis jalan setiap ada perubahan di `src/`.
+3. Tunggu ±30–60 menit (render WebGL software), buka run yang selesai → bagian **Artifacts** →
+   unduh `japandi-bedroom-mp4` (file .zip berisi MP4) → ekstrak dengan aplikasi Files → unggah ke TikTok.
+
+Mengubah teks/warna dari HP: buka file (mis. `src/ui/Overlay.tsx`) di GitHub → ikon pensil → *Commit* —
+render ulang berjalan otomatis.
+
+### Opsi B — Claude Code di web/HP
+Buka sesi Claude Code (claude.ai/code) dari HP dan minta render ulang; video dikirim sebagai file.
+
+### Opsi C — Termux (lanjutan, lambat)
+Remotion butuh Chromium + WebGL; di Termux hanya memungkinkan lewat `proot-distro` Ubuntu
+(`pkg install proot-distro && proot-distro install ubuntu`, lalu pasang Node 22 + `npx remotion browser ensure`).
+Render 900 frame di CPU HP bisa memakan beberapa jam — gunakan `--scale=0.5` untuk uji.
+
+## Catatan render di cloud/CI
+- Tidak ada GPU: wajib `--gl=swangle` (SwiftShader). Draft skala 0.35 ≈ 15 menit di 4 vCPU.
+- Font dibundel lokal karena Chromium headless di balik proxy tidak bisa mengambil Google Fonts.
+- Area aman TikTok: teks ditempatkan di luar ±150 px kanan (tombol) dan bawah (caption).
